@@ -1,54 +1,7 @@
 import numpy as np
-import sys
 
-#data = np.loadtxt("data120.txt")
-#data = np.loadtxt("SanityCheckDataSet__2.txt")
-data = np.loadtxt("SanityCheck_DataSet__1.txt")
-instance_count = data.shape[0]
-feature_count = data.shape[1] - 1
-
-# Features can be a set or list here.
-def accuracy(data, selected_features, best_accuracy=0.0) -> float:
-    feature_indices = np.array(list(selected_features), dtype=int)
-
-    selected_data = data[:, 1:][:, feature_indices]
-
-    """
-    def euclidean_distance(point1, point2):
-        diff = point1[feature_indices] - point2[feature_indices]
-        return np.dot(diff, diff)
-        total = 0
-        for i in selected_features:
-            total += (point1[i] - point2[i]) ** 2
-        # No need for square root - comparisons will still remain the same.
-        return total
-    """
-
-    correct = 0
-    labels = data[:, 0]
-    features = data[:, 1:]
-    
-    for i in range(instance_count):
-        best_label, min_distance = None, float("inf")
-        test_label, test_vector = labels[i], selected_data[i]#features[i]
-        for j in range(instance_count):
-            if i == j: continue
-            train_label, train_vector = labels[j], selected_data[j]#features[j]
-            dist = test_vector - train_vector #euclidean_distance(test_vector, train_vector)
-            dist = np.dot(dist, dist)
-            if dist < min_distance:
-                    min_distance = dist
-                    best_label = train_label
-        if best_label == test_label:
-            correct += 1
-        else:
-            # Try to prune
-            if (correct + instance_count - i - 1) / instance_count <= best_accuracy:
-                return 0.0
-    return correct / instance_count
-
-
-def forward_selection(data):
+def forward_selection(data, verbose = False):
+    feature_count = data.shape[1] - 1
     selected_features = []
     unused = set(list(range(feature_count)))
     best_accuracy = 0.0
@@ -73,11 +26,13 @@ def forward_selection(data):
 
     print(f"The best feature subset that was found using forward selection was {[f + 1 for f in best_feature_subset]} with an accuracy of {best_accuracy}.")
 
-def backward_elimination(data, verbose = True):
+def backward_elimination(data, verbose = False):
+    feature_count = data.shape[1] - 1
     selected_features = set(range(feature_count))
     best_accuracy = accuracy(data, selected_features)
     best_feature_subset = list(selected_features)
     level = 1
+
     while len(selected_features) != 0:
         print(f"On the {level}th level of the search tree")
         best_remove, best_remove_acc = None, -1.0
@@ -99,4 +54,32 @@ def backward_elimination(data, verbose = True):
 
     best_feature_subset.sort()
     print(f"The best feature subset that was found using backward elimination was {[f + 1 for f in best_feature_subset]} with an accuracy of {best_accuracy}.")
+
+def accuracy(data, selected_features, best_accuracy=0.0) -> float:
+    instance_count = data.shape[0]
+    feature_indices = np.array(list(selected_features), dtype=int)
+
+    correct = 0
+    label_data = data[:, 0]
+    features_data = data[:, 1:][:, feature_indices]
+
+    for i in range(instance_count):
+        best_label, min_distance = None, float("inf")
+        test_label, test_vector = label_data[i], features_data[i]
+        for j in range(instance_count):
+            if i == j: continue
+            train_label, train_vector = label_data[j], features_data[j] 
+            dist = test_vector - train_vector #euclidean_distance(test_vector, train_vector)
+            dist = np.dot(dist, dist)
+            if dist < min_distance:
+                    min_distance = dist
+                    best_label = train_label
+        if best_label == test_label:
+            correct += 1
+        else:
+            # Try to prune
+            if (correct + instance_count - i - 1) / instance_count <= best_accuracy:
+                return 0.0
+    return correct / instance_count
+
 

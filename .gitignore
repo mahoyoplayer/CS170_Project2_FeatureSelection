@@ -1,4 +1,5 @@
 .vs/
+dead_code.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
