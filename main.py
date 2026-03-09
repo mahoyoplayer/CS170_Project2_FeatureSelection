@@ -3,7 +3,7 @@ import os
 from first import forward_selection, backward_elimination
 
 if __name__ == "__main__":
-    print("Feature Selection Program")
+    print("Feature Selection Program using Nearest Neighbor")
 
     while True:
         file_name = input("Enter name of file to test: ")
@@ -26,6 +26,7 @@ if __name__ == "__main__":
             algo_choice = int(algo_choice)
             break
 
+    print("")
     if algo_choice == 1:
         forward_selection(data, verbose = True)
     else:
