@@ -11,6 +11,8 @@ if __name__ == "__main__":
             print(f"Could not find {file_name}. Please enter a valid file name.\n")
         else:
             data = np.loadtxt(file_name)
+            # The class column should be integers.
+            data[:, 0] = data[:, 0].astype(int)
             break
 
     INDENT = "  "

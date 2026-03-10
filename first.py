@@ -3,12 +3,25 @@ import bisect
 
 
 INDENT = "  "
+def default_rate(data) -> float:
+    label_data = data[:, 0]
+    instance_count = data.shape[0]
+    # Class feature was previouslly converted to integers
+    population = {
+        1: 0,
+        2: 0
+    }
+    for label in label_data:
+        population[label] += 1
+    # Default rate = Percentage of most popular class
+    return max(population.values()) / instance_count
 
-def forward_selection(data, verbose = False):
+# Maybec convert float to int later for labels
+def forward_selection(data, prune = True, verbose = False):
     instance_count, feature_count = data.shape[0], data.shape[1] - 1
-    selected_features = []
+    selected_features = [] # Start with using no features
     unused = set(range(feature_count))
-    best_accuracy = 0.0
+    best_accuracy = default_rate(data)
     best_feature_subset = []
     level = 1
 
@@ -19,42 +32,41 @@ def forward_selection(data, verbose = False):
         if verbose:
             print(f"On the {level}th level of the search tree")
         best_add, best_add_acc = None, -1.0
+
+        # Try the addition of all unused features.
         for candidate_feature in unused:
             selected_features.append(candidate_feature)
-            add_acc = accuracy(data, selected_features, best_add_acc)
+            add_acc = accuracy(data, selected_features, best_add_acc if prune else None)
+            if add_acc is not None and add_acc > best_add_acc:
+                best_add = candidate_feature
+                best_add_acc = add_acc
             if verbose:
                 print(f"{INDENT}Using feature(s) {[f + 1 for f in selected_features]} ", end = "")
                 if add_acc is not None:
                     print(f"gives an accuracy of {add_acc*100:.1f}%")
                 else:
                     print("was pruned.")
-
-            if add_acc is not None and add_acc > best_add_acc:
-                best_add = candidate_feature
-                best_add_acc = add_acc
             selected_features.pop()
 
-        # Permanently add best one.
+        # Permanently add feature that resulted in best accuracy.
         bisect.insort(selected_features, best_add)
         unused.remove(best_add)
         if best_add_acc > best_accuracy:
             best_feature_subset = selected_features[:]
             best_accuracy = best_add_acc
-
         if verbose:
             print(f"Feature set {[f + 1 for f in selected_features]} gives the best accuracy - {best_add_acc*100:.1f}%.\n")
-
         level += 1
 
     if verbose:
         print(f"The best feature subset that was found using forward selection was {[f + 1 for f in best_feature_subset]} with an accuracy of {best_accuracy*100:.1f}%.")
     return [best_feature_subset, best_accuracy]
 
-def backward_elimination(data, verbose = False):
+def backward_elimination(data, prune = True, verbose = False):
     instance_count, feature_count = data.shape[0], data.shape[1] - 1
     selected_features = list(range(feature_count))
     best_accuracy = accuracy(data, selected_features)
-    best_feature_subset = list(selected_features)
+    best_feature_subset = selected_features[:]
     level = 1
 
     if verbose:
@@ -67,7 +79,7 @@ def backward_elimination(data, verbose = False):
         best_remove, best_remove_acc = None, -1.0
         for candidate_feature in list(selected_features):
             selected_features.remove(candidate_feature)
-            remove_acc = accuracy(data, selected_features, best_remove_acc)
+            remove_acc = accuracy(data, selected_features, best_remove_acc if prune else None)
             if verbose:
                 print(f"{INDENT}Using feature(s) {[f + 1 for f in selected_features]} ", end = "")
                 if remove_acc is not None:
@@ -93,7 +105,7 @@ def backward_elimination(data, verbose = False):
         print(f"The best feature subset that was found using backward elimination was {[f + 1 for f in best_feature_subset]} with an accuracy of {best_accuracy*100:.1f}%.")
     return [best_feature_subset, best_accuracy]
 
-def accuracy(data, selected_features, best_accuracy=0.0) -> float | None:
+def accuracy(data, selected_features, best_accuracy=None) -> float | None:
     instance_count = data.shape[0]
     feature_indices = np.array(list(selected_features), dtype=int)
 
@@ -117,7 +129,7 @@ def accuracy(data, selected_features, best_accuracy=0.0) -> float | None:
             correct += 1
         else:
             # Try to prune
-            if (correct + instance_count - i - 1) / instance_count <= best_accuracy:
+            if best_accuracy is not None and (correct + instance_count - i - 1) / instance_count <= best_accuracy:
                 return None
     return correct / instance_count
 
