@@ -1,8 +1,8 @@
 import numpy as np
 import bisect
 
-
 INDENT = "  "
+
 def default_rate(data) -> float:
     label_data = data[:, 0]
     instance_count = data.shape[0]
@@ -16,8 +16,7 @@ def default_rate(data) -> float:
     # Default rate = Percentage of most popular class
     return max(population.values()) / instance_count
 
-# Maybec convert float to int later for labels
-def forward_selection(data, prune = True, verbose = False):
+def forward_selection(data, prune = True, verbose = False) -> list:
     instance_count, feature_count = data.shape[0], data.shape[1] - 1
     selected_features = [] # Start with using no features
     unused = set(range(feature_count))
@@ -27,6 +26,7 @@ def forward_selection(data, prune = True, verbose = False):
 
     if verbose:
         print(f"The dataset has {feature_count} features (excluding class attribute) and {instance_count} instances.")
+        print(f"Using no features, an accuracy of {best_accuracy*100:.1f}% is possible (default rate).")
 
     while len(selected_features) != feature_count:
         if verbose:
@@ -62,7 +62,7 @@ def forward_selection(data, prune = True, verbose = False):
         print(f"The best feature subset that was found using forward selection was {[f + 1 for f in best_feature_subset]} with an accuracy of {best_accuracy*100:.1f}%.")
     return [best_feature_subset, best_accuracy]
 
-def backward_elimination(data, prune = True, verbose = False):
+def backward_elimination(data, prune = True, verbose = False) -> list:
     instance_count, feature_count = data.shape[0], data.shape[1] - 1
     selected_features = list(range(feature_count))
     best_accuracy = accuracy(data, selected_features)
@@ -100,11 +100,18 @@ def backward_elimination(data, prune = True, verbose = False):
             best_accuracy = best_remove_acc
         level += 1
 
+    # Now test using no features.
+    if (d_rate := default_rate(data)) > best_accuracy:
+        best_accuracy = d_rate
+        best_feature_subset = []
+    
     best_feature_subset.sort()
     if verbose:
+        print(f"Using no features, an accuracy of {d_rate*100:.1f}% is possible (default rate).\n")
         print(f"The best feature subset that was found using backward elimination was {[f + 1 for f in best_feature_subset]} with an accuracy of {best_accuracy*100:.1f}%.")
     return [best_feature_subset, best_accuracy]
 
+# This needs to be adjusted to work with 1-indexed
 def accuracy(data, selected_features, best_accuracy=None) -> float | None:
     instance_count = data.shape[0]
     feature_indices = np.array(list(selected_features), dtype=int)
@@ -132,5 +139,3 @@ def accuracy(data, selected_features, best_accuracy=None) -> float | None:
             if best_accuracy is not None and (correct + instance_count - i - 1) / instance_count <= best_accuracy:
                 return None
     return correct / instance_count
-
-

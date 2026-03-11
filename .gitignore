@@ -1,5 +1,6 @@
 .vs/
 dead_code.py
+profiler.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

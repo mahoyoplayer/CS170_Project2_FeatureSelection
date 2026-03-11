@@ -2,9 +2,12 @@ import numpy as np
 import os
 from first import forward_selection, backward_elimination
 
+INDENT = "  "
+
 if __name__ == "__main__":
     print("Feature Selection Program using Nearest Neighbor")
 
+    # Get name of file to use
     while True:
         file_name = input("Enter name of file to test: ")
         if not os.path.isfile(file_name):
@@ -15,7 +18,7 @@ if __name__ == "__main__":
             data[:, 0] = data[:, 0].astype(int)
             break
 
-    INDENT = "  "
+    # Get choice of search algorithm
     print("Choose a Search Algorithm (1, 2)")
     print(f"{INDENT}1) Forward Selection")
     print(f"{INDENT}2) Backward Elimination")
