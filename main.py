@@ -1,8 +1,9 @@
 import numpy as np
 import os
-from first import forward_selection, backward_elimination
+from feature_selection import forward_selection, backward_elimination
 
 INDENT = "  "
+PRUNE = True # Can vastly speed up search if set to True
 
 if __name__ == "__main__":
     print("Feature Selection Program using Nearest Neighbor")
@@ -33,6 +34,6 @@ if __name__ == "__main__":
 
     print("")
     if algo_choice == 1:
-        forward_selection(data, verbose = True)
+        forward_selection(data, prune = PRUNE, verbose = True)
     else:
-        backward_elimination(data, verbose = True)
+        backward_elimination(data, prune = PRUNE, verbose = True)

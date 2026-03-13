@@ -1,4 +1,4 @@
-from first import backward_elimination, forward_selection
+from feature_selection import backward_elimination, forward_selection
 from time import perf_counter
 import numpy as np
 
