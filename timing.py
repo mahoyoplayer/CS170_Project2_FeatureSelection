@@ -5,12 +5,15 @@ import numpy as np
 # We want to speed up
 prune = True
 
-data_small = "data120.txt"
-data_large = "sanity1.txt"
+data_small = "data43_small.txt"
+data_large = "data55_large.txt"
 
 if __name__ == "__main__":
     print("Program Start")
     small_data = np.loadtxt(data_small)
+    small_data[:, 0] = small_data[:, 0].astype(int)
+    large_data = np.loadtxt(data_large)
+    large_data[:, 0] = large_data[:, 0].astype(int)
 
     # Small Dataset
     start = perf_counter()
@@ -18,6 +21,7 @@ if __name__ == "__main__":
     end = perf_counter()
     time_diff = end - start # in seconds
     print(f"Forward Selection on small dataset took {time_diff:.2f} seconds.")
+    print(f"Found {best_subset}, acc = {best_acc}\n")
 
 
     start = perf_counter()
@@ -25,14 +29,15 @@ if __name__ == "__main__":
     end = perf_counter()
     time_diff = end - start # in seconds
     print(f"Backwards Elimination on small dataset took {time_diff:.2f} seconds.")
+    print(f"Found {best_subset}, acc = {best_acc}\n")
 
     # Large Dataset
-    large_data = np.loadtxt(data_large)
     start = perf_counter()
     best_subset, best_acc = forward_selection(large_data, prune = prune)
     end = perf_counter()
     time_diff = end - start # in seconds
     print(f"Forward Selection on large dataset took {time_diff:.2f} seconds.")
+    print(f"Found {best_subset}, acc = {best_acc}\n")
 
 
     start = perf_counter()
@@ -40,5 +45,6 @@ if __name__ == "__main__":
     end = perf_counter()
     time_diff = end - start # in seconds
     print(f"Backwards Elimination on large dataset took {time_diff:.2f} seconds.")
+    print(f"Found {best_subset}, acc = {best_acc}\n")
 
 
