@@ -1,6 +1,7 @@
 import numpy as np
 import os
 from feature_selection import forward_selection, backward_elimination
+from time import perf_counter
 
 INDENT = "  "
 PRUNE = True # Can vastly speed up search if set to True
@@ -20,7 +21,7 @@ if __name__ == "__main__":
             break
 
     # Get choice of search algorithm
-    print("Choose a Search Algorithm (1, 2)")
+    print("\nChoose a Search Algorithm (1, 2)")
     print(f"{INDENT}1) Forward Selection")
     print(f"{INDENT}2) Backward Elimination")
     algo_choice = None
@@ -33,7 +34,13 @@ if __name__ == "__main__":
             break
 
     print("")
+    start = perf_counter()
+
     if algo_choice == 1:
         forward_selection(data, prune = PRUNE, verbose = True)
     else:
         backward_elimination(data, prune = PRUNE, verbose = True)
+
+    end = perf_counter()
+    time_diff = end - start # in seconds
+    print(f"\nTotal time taken: {time_diff:.2f} seconds")
