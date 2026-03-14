@@ -1,6 +1,8 @@
 .vs/
 dead_code.py
 profiler.py
+time.txt
+timing.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
