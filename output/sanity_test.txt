@@ -1,0 +1,13 @@
+Accuracy Function Test
+
+On Sanity Check 1 when only using features [7, 10, 12] - 
+Accuracy Function Found: 0.950
+Expected Accuracy: 0.950
+Test Passed
+
+On Sanity Check 2 when only using features [2, 8, 10] - 
+Accuracy Function Found: 0.960
+Expected Accuracy: 0.960
+Test Passed
+
+All Tests Passed!

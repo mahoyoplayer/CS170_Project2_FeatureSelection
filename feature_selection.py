@@ -137,16 +137,13 @@ def accuracy(data, selected_features, best_accuracy=None) -> float | None:
             if i == j: 
                 continue
             train_label, train_vector = label_data[j], features_data[j] 
+
             # There is no need for square root in Euclid here, comparisons will not change.
-            #euclid_dist = sum([x**2 for x in test_vector - train_vector])
-            
-            # DELETE START
-            dist = train_vector - test_vector
-            euclid_dist = np.dot(dist, dist)
-            # DELETE END
+            euclid_dist = sum([x**2 for x in test_vector - train_vector]) 
             if euclid_dist < min_distance:
                 min_distance = euclid_dist
                 best_label = train_label
+
         # If labels match, algorithm was correct!
         if best_label == test_label:
             correct += 1
@@ -154,4 +151,5 @@ def accuracy(data, selected_features, best_accuracy=None) -> float | None:
             # Prune if attaining better accuracy is no longer possible
             if best_accuracy is not None and (correct + instance_count - i - 1) / instance_count <= best_accuracy:
                 return None
+    # Return percentage of correctly predicted cases
     return correct / instance_count

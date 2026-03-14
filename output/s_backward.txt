@@ -1,0 +1,194 @@
+Feature Selection Program using Nearest Neighbor
+Enter name of file to test: 
+Choose a Search Algorithm (1, 2)
+  1) Forward Selection
+  2) Backward Elimination
+Answer: 
+The dataset has 16 features (excluding class attribute) and 500 instances.
+Using all 16 features, I get an accuracy of 68.4%.
+
+Level 1 of search tree - 
+  Using feature(s) [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] gives an accuracy of 66.8%
+  Using feature(s) [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] gives an accuracy of 71.0%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] gives an accuracy of 70.4%
+  Using feature(s) [2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] gives an accuracy of 71.4%
+  Using feature(s) [2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] gives an accuracy of 70.6%
+  Using feature(s) [2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17] gives an accuracy of 68.0%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17] gives an accuracy of 68.6%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16, 17] gives an accuracy of 69.0%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 15, 16, 17] gives an accuracy of 69.6%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17] gives an accuracy of 65.2%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17] gives an accuracy of 69.8%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17] gives an accuracy of 71.6%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17] gives an accuracy of 70.0%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 71.8%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17] gives an accuracy of 70.8%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16] gives an accuracy of 69.2%
+Feature set [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16] gives the best accuracy - 71.8%.
+
+Level 2 of search tree - 
+  Using feature(s) [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 70.4%
+  Using feature(s) [2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 71.0%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 73.8%
+  Using feature(s) [2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 73.2%
+  Using feature(s) [2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 71.2%
+  Using feature(s) [2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 71.0%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 72.4%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 73.8%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17] gives an accuracy of 69.8%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 16, 17] gives an accuracy of 68.0%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 16, 17] gives an accuracy of 73.6%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 17] gives an accuracy of 71.4%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17] gives an accuracy of 71.4%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17] gives an accuracy of 71.8%
+  Using feature(s) [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] gives an accuracy of 72.2%
+Feature set [1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16] gives the best accuracy - 73.8%.
+
+Level 3 of search tree - 
+  Using feature(s) [3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 74.0%
+  Using feature(s) [2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 70.2%
+  Using feature(s) [2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 75.2%
+  Using feature(s) [2, 3, 5, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 74.8%
+  Using feature(s) [2, 3, 5, 6, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 74.2%
+  Using feature(s) [2, 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 75.0%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 72.6%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17] gives an accuracy of 72.2%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 9, 10, 12, 13, 14, 16, 17] gives an accuracy of 69.2%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 9, 10, 11, 13, 14, 16, 17] gives an accuracy of 73.2%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 14, 16, 17] gives an accuracy of 73.0%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17] gives an accuracy of 73.2%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17] gives an accuracy of 74.4%
+  Using feature(s) [2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] gives an accuracy of 72.4%
+Feature set [1, 2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16] gives the best accuracy - 75.2%.
+
+Level 4 of search tree - 
+  Using feature(s) [3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 76.4%
+  Using feature(s) [2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 71.2%
+  Using feature(s) [2, 3, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 75.2%
+  Using feature(s) [2, 3, 6, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 74.0%
+  Using feature(s) [2, 3, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 75.0%
+  Using feature(s) [2, 3, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 71.8%
+  Using feature(s) [2, 3, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17] gives an accuracy of 72.4%
+  Using feature(s) [2, 3, 6, 7, 8, 9, 10, 12, 13, 14, 16, 17] gives an accuracy of 67.4%
+  Using feature(s) [2, 3, 6, 7, 8, 9, 10, 11, 13, 14, 16, 17] gives an accuracy of 73.4%
+  Using feature(s) [2, 3, 6, 7, 8, 9, 10, 11, 12, 14, 16, 17] gives an accuracy of 75.0%
+  Using feature(s) [2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17] gives an accuracy of 72.4%
+  Using feature(s) [2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17] gives an accuracy of 75.6%
+  Using feature(s) [2, 3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] gives an accuracy of 71.6%
+Feature set [2, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16] gives the best accuracy - 76.4%.
+
+Level 5 of search tree - 
+  Using feature(s) [6, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 73.6%
+  Using feature(s) [3, 7, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 74.4%
+  Using feature(s) [3, 6, 8, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 78.2%
+  Using feature(s) [3, 6, 7, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 78.6%
+  Using feature(s) [3, 6, 7, 8, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 73.4%
+  Using feature(s) [3, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17] gives an accuracy of 72.6%
+  Using feature(s) [3, 6, 7, 8, 9, 10, 12, 13, 14, 16, 17] gives an accuracy of 70.6%
+  Using feature(s) [3, 6, 7, 8, 9, 10, 11, 13, 14, 16, 17] gives an accuracy of 76.0%
+  Using feature(s) [3, 6, 7, 8, 9, 10, 11, 12, 14, 16, 17] gives an accuracy of 77.8%
+  Using feature(s) [3, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17] gives an accuracy of 73.4%
+  Using feature(s) [3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 17] gives an accuracy of 77.4%
+  Using feature(s) [3, 6, 7, 8, 9, 10, 11, 12, 13, 14, 16] gives an accuracy of 74.4%
+Feature set [2, 5, 6, 8, 9, 10, 11, 12, 13, 15, 16] gives the best accuracy - 78.6%.
+
+Level 6 of search tree - 
+  Using feature(s) [6, 7, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 76.6%
+  Using feature(s) [3, 7, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 77.0%
+  Using feature(s) [3, 6, 9, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 76.4%
+  Using feature(s) [3, 6, 7, 10, 11, 12, 13, 14, 16, 17] gives an accuracy of 76.8%
+  Using feature(s) [3, 6, 7, 9, 11, 12, 13, 14, 16, 17] gives an accuracy of 77.8%
+  Using feature(s) [3, 6, 7, 9, 10, 12, 13, 14, 16, 17] gives an accuracy of 73.0%
+  Using feature(s) [3, 6, 7, 9, 10, 11, 13, 14, 16, 17] gives an accuracy of 76.8%
+  Using feature(s) [3, 6, 7, 9, 10, 11, 12, 14, 16, 17] gives an accuracy of 77.6%
+  Using feature(s) [3, 6, 7, 9, 10, 11, 12, 13, 16, 17] gives an accuracy of 76.6%
+  Using feature(s) [3, 6, 7, 9, 10, 11, 12, 13, 14, 17] gives an accuracy of 77.8%
+  Using feature(s) [3, 6, 7, 9, 10, 11, 12, 13, 14, 16] gives an accuracy of 74.6%
+Feature set [2, 5, 6, 8, 10, 11, 12, 13, 15, 16] gives the best accuracy - 77.8%.
+
+Level 7 of search tree - 
+  Using feature(s) [6, 7, 9, 11, 12, 13, 14, 16, 17] gives an accuracy of 78.2%
+  Using feature(s) [3, 7, 9, 11, 12, 13, 14, 16, 17] gives an accuracy of 76.8%
+  Using feature(s) [3, 6, 9, 11, 12, 13, 14, 16, 17] gives an accuracy of 78.0%
+  Using feature(s) [3, 6, 7, 11, 12, 13, 14, 16, 17] gives an accuracy of 77.0%
+  Using feature(s) [3, 6, 7, 9, 12, 13, 14, 16, 17] gives an accuracy of 72.0%
+  Using feature(s) [3, 6, 7, 9, 11, 13, 14, 16, 17] gives an accuracy of 79.6%
+  Using feature(s) [3, 6, 7, 9, 11, 12, 14, 16, 17] gives an accuracy of 79.4%
+  Using feature(s) [3, 6, 7, 9, 11, 12, 13, 16, 17] gives an accuracy of 77.8%
+  Using feature(s) [3, 6, 7, 9, 11, 12, 13, 14, 17] gives an accuracy of 77.4%
+  Using feature(s) [3, 6, 7, 9, 11, 12, 13, 14, 16] gives an accuracy of 74.8%
+Feature set [2, 5, 6, 8, 10, 12, 13, 15, 16] gives the best accuracy - 79.6%.
+
+Level 8 of search tree - 
+  Using feature(s) [6, 7, 9, 11, 13, 14, 16, 17] gives an accuracy of 79.8%
+  Using feature(s) [3, 7, 9, 11, 13, 14, 16, 17] gives an accuracy of 79.6%
+  Using feature(s) [3, 6, 9, 11, 13, 14, 16, 17] gives an accuracy of 82.0%
+  Using feature(s) [3, 6, 7, 11, 13, 14, 16, 17] gives an accuracy of 79.6%
+  Using feature(s) [3, 6, 7, 9, 13, 14, 16, 17] gives an accuracy of 71.8%
+  Using feature(s) [3, 6, 7, 9, 11, 14, 16, 17] gives an accuracy of 80.6%
+  Using feature(s) [3, 6, 7, 9, 11, 13, 16, 17] gives an accuracy of 79.8%
+  Using feature(s) [3, 6, 7, 9, 11, 13, 14, 17] gives an accuracy of 81.6%
+  Using feature(s) [3, 6, 7, 9, 11, 13, 14, 16] gives an accuracy of 76.6%
+Feature set [2, 5, 8, 10, 12, 13, 15, 16] gives the best accuracy - 82.0%.
+
+Level 9 of search tree - 
+  Using feature(s) [6, 9, 11, 13, 14, 16, 17] gives an accuracy of 83.0%
+  Using feature(s) [3, 9, 11, 13, 14, 16, 17] gives an accuracy of 82.2%
+  Using feature(s) [3, 6, 11, 13, 14, 16, 17] gives an accuracy of 81.2%
+  Using feature(s) [3, 6, 9, 13, 14, 16, 17] gives an accuracy of 71.4%
+  Using feature(s) [3, 6, 9, 11, 14, 16, 17] gives an accuracy of 79.6%
+  Using feature(s) [3, 6, 9, 11, 13, 16, 17] gives an accuracy of 81.8%
+  Using feature(s) [3, 6, 9, 11, 13, 14, 17] gives an accuracy of 84.8%
+  Using feature(s) [3, 6, 9, 11, 13, 14, 16] gives an accuracy of 77.2%
+Feature set [2, 5, 8, 10, 12, 13, 16] gives the best accuracy - 84.8%.
+
+Level 10 of search tree - 
+  Using feature(s) [6, 9, 11, 13, 14, 17] gives an accuracy of 83.4%
+  Using feature(s) [3, 9, 11, 13, 14, 17] gives an accuracy of 86.4%
+  Using feature(s) [3, 6, 11, 13, 14, 17] gives an accuracy of 87.0%
+  Using feature(s) [3, 6, 9, 13, 14, 17] gives an accuracy of 69.2%
+  Using feature(s) [3, 6, 9, 11, 14, 17] gives an accuracy of 85.8%
+  Using feature(s) [3, 6, 9, 11, 13, 17] gives an accuracy of 85.4%
+  Using feature(s) [3, 6, 9, 11, 13, 14] gives an accuracy of 80.8%
+Feature set [2, 5, 10, 12, 13, 16] gives the best accuracy - 87.0%.
+
+Level 11 of search tree - 
+  Using feature(s) [6, 11, 13, 14, 17] gives an accuracy of 85.6%
+  Using feature(s) [3, 11, 13, 14, 17] gives an accuracy of 87.2%
+  Using feature(s) [3, 6, 13, 14, 17] gives an accuracy of 72.8%
+  Using feature(s) [3, 6, 11, 14, 17] gives an accuracy of 86.2%
+  Using feature(s) [3, 6, 11, 13, 17] gives an accuracy of 84.2%
+  Using feature(s) [3, 6, 11, 13, 14] gives an accuracy of 79.8%
+Feature set [2, 10, 12, 13, 16] gives the best accuracy - 87.2%.
+
+Level 12 of search tree - 
+  Using feature(s) [11, 13, 14, 17] gives an accuracy of 90.2%
+  Using feature(s) [3, 13, 14, 17] gives an accuracy of 73.0%
+  Using feature(s) [3, 11, 14, 17] gives an accuracy of 87.8%
+  Using feature(s) [3, 11, 13, 17] gives an accuracy of 88.6%
+  Using feature(s) [3, 11, 13, 14] gives an accuracy of 80.6%
+Feature set [10, 12, 13, 16] gives the best accuracy - 90.2%.
+
+Level 13 of search tree - 
+  Using feature(s) [13, 14, 17] gives an accuracy of 75.6%
+  Using feature(s) [11, 14, 17] gives an accuracy of 91.4%
+  Using feature(s) [11, 13, 17] gives an accuracy of 93.2%
+  Using feature(s) [11, 13, 14] gives an accuracy of 83.6%
+Feature set [10, 12, 16] gives the best accuracy - 93.2%.
+
+Level 14 of search tree - 
+  Using feature(s) [13, 17] gives an accuracy of 77.2%
+  Using feature(s) [11, 17] gives an accuracy of 95.8%
+  Using feature(s) [11, 13] gives an accuracy of 86.2%
+Feature set [10, 16] gives the best accuracy - 95.8%.
+
+Level 15 of search tree - 
+  Using feature(s) [17] gives an accuracy of 72.4%
+  Using feature(s) [11] gives an accuracy of 86.2%
+Feature set [10] gives the best accuracy - 86.2%.
+
+Using no features, an accuracy of 80.8% is possible (default rate).
+
+The best feature subset that was found using backward elimination was [10, 16] with an accuracy of 95.8%.
+
+Total time taken: 112.66 seconds
